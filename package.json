@@ -1,0 +1,63 @@
+{
+  "name": "abramson21.github.sprint_13",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abramson21/abramson21.github.sprint_13.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abramson21/abramson21.github.sprint_13/issues"
+  },
+  "homepage": "https://github.com/abramson21/abramson21.github.sprint_13",
+  "devDependencies": {
+    "autoprefixer": "^9.7.1",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "eslint": "^6.7.2",
+    "gh-pages": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "nodemon": "^2.0.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-md5-hash": "0.0.6"
+  },
+  "dependencies": {
+    "authorization-header": "^0.2.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie": "^0.4.0",
+    "cookie-parser": "^1.4.4",
+    "cookies": "^0.8.0",
+    "core-js": "^3.1.4",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "express": "^4.17.1",
+    "express-winston": "^4.0.2",
+    "file-loader": "^4.2.0",
+    "gh-pages": "~2.0.1",
+    "image-webpack-loader": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.9",
+    "mongoose-validator": "^2.1.0",
+    "validator": "^12.1.0",
+    "winston": "^3.2.1"
+  }
+}
