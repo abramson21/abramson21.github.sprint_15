@@ -1,5 +1,5 @@
 {
-  "name": "abramson21.github.sprint_13",
+  "name": "abramson21.github.sprint_15",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abramson21/abramson21.github.sprint_13.git"
+    "url": "git+https://github.com/abramson21/abramson21.github.sprint_15.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/abramson21/abramson21.github.sprint_13/issues"
+    "url": "https://github.com/abramson21/abramson21.github.sprint_15/issues"
   },
-  "homepage": "https://github.com/abramson21/abramson21.github.sprint_13",
+  "homepage": "https://github.com/abramson21/abramson21.github.sprint_15",
   "devDependencies": {
     "autoprefixer": "^9.7.1",
     "babel-loader": "^8.0.6",
