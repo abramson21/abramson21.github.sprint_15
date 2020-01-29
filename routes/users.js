@@ -1,9 +1,12 @@
 const router = require('express').Router();
-const { getAllCards, createCard, deleteCard } = require('../controllers/cards');
+const { celebrate, Joi } = require('celebrate');
+const { getAllUsers, getUser } = require('../controllers/users');
 
-router.get('/cards', getAllCards);
-router.post('/cards', createCard);
-router.delete('/cards/:cardId', deleteCard);
-
+router.get('/users', getAllUsers);
+router.get('/users/:userId', celebrate({
+  params: Joi.object().keys({
+    userId: Joi.string().alphanum().length(24),
+  }),
+}), getUser);
 
 module.exports = router;
