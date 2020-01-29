@@ -1,3 +1,4 @@
+
 const error = require('express').Router();
 
 error.all('/*', (req, res) => {

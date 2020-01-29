@@ -1,12 +1,10 @@
 const Card = require('../models/card');
 
-const Error500 = require('../middlewares/errors/error_500');
-
 function errorSend(res) {
   res.status(500).send({ message: 'Произошла ошибка' });
 }
 
-module.exports.getAllCards = (req, res, next) => {
+module.exports.getAllCards = (req, res) => {
   Card.find({})
     .then((card) => {
       if (card.length === 0) {
@@ -14,15 +12,15 @@ module.exports.getAllCards = (req, res, next) => {
       }
       return res.send({ data: card });
     })
-    .catch(() => next(new Error500('На сервере произошла ошибка')));
+    .catch((error) => res.status(500).send({ message: error.message }));
 };
 
-module.exports.createCard = (req, res, next) => {
+module.exports.createCard = (req, res) => {
   const owner = req.user._id;
   const { name, link } = req.body;
   Card.create({ name, link, owner })
     .then((card) => res.send({ data: card }))
-    .catch(() => next(new Error500('На сервере произошла ошибка')));
+    .catch(() => res.status(500).send({ message: 'Не удается создать карточку' }));
 };
 
 module.exports.deleteCard = (req, res) => {

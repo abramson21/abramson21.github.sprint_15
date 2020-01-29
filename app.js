@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const users = require('./routes/users');
 const cards = require('./routes/cards');
@@ -26,8 +25,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-app.use(requestLogger);
-
 
 app.use(cookieParser());
 app.post('/signup', createUser);
@@ -36,9 +33,5 @@ app.post('/signin', login);
 app.use('/', auth, users);
 app.use('/', auth, cards);
 app.use('/', auth, error);
-app.use(errorLogger);
-
-app.use(errorLogger);
-
 
 app.listen(PORT, () => {});
