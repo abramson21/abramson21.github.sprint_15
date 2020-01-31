@@ -13,7 +13,7 @@ function errorStatus(res) {
 
 module.exports = (req, res, next) => {
   const cookie = req.cookies.jwt;
-  const JWT_SECRET = 'b24076852c7c534c77ce7b233022026ffc663393b557432496f2a70fa3756b33';
+  const JWT_SECRET = '7b003420c28f49a771bf5ac9a39215ad954a82668605aa6aa106630e483e07ad';
   if (!cookie) {
     errorStatus(res);
   }

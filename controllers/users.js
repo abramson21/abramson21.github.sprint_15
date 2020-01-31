@@ -13,7 +13,7 @@ module.exports.getAllUsers = (req, res) => {
       if (user.length === 0) {
         throw new NotFoundError('База данных user пуста!');
       }
-      return res.send({ data: user });
+      else { return res.send({ data: user }); }
     })
     .catch((error) => res.status(500).send({ message: error.message }));
 };
@@ -49,7 +49,7 @@ module.exports.login = (req, res) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const JWT_SECRET = 'b24076852c7c534c77ce7b233022026ffc663393b557432496f2a70fa3756b33';
+      const JWT_SECRET = '7b003420c28f49a771bf5ac9a39215ad954a82668605aa6aa106630e483e07ad';
       const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
       res
         .cookie('jwt', token, {
