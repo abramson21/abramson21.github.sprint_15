@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const { celebrate, Joi } = require('celebrate');
+const { celebrate, Joi, errors } = require('celebrate');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -59,15 +59,20 @@ app.post('/signin', celebrate({
   }),
 }), login);
 
+
 app.use('/', auth, users);
 app.use('/', auth, cards);
 app.use('/', auth, error);
 
 app.use(errorLogger);
 
+
+app.use(errors());
+
 app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).send({ message: err.message });
   next();
 });
+
 
 app.listen(PORT, () => {});
