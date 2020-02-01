@@ -1,30 +1,21 @@
-const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
-const express = require('express');
 
-const app = express();
-app.use(cookieParser());
+const NotFoundError = require('../errors/error_not_found');
+require('dotenv').config();
 
-function errorStatus(res) {
-  return res
-    .status(401)
-    .send({ message: 'Доступ запрещен. Необходима авторизация' });
-}
-
+const { NODE_ENV, JWT_SECRET } = process.env;
 module.exports = (req, res, next) => {
   const cookie = req.cookies.jwt;
-  const JWT_SECRET = '7b003420c28f49a771bf5ac9a39215ad954a82668605aa6aa106630e483e07ad';
   if (!cookie) {
-    errorStatus(res);
+    throw new NotFoundError('Доступ запрещен. Необходима авторизация');
   }
-
   let payload;
 
   try {
-    payload = jwt.verify(cookie, JWT_SECRET);
+    payload = jwt.verify(cookie, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
     req.user = payload;
   } catch (err) {
-    errorStatus(res);
+    throw new NotFoundError('Доступ запрещен. Необходима авторизация');
   }
 
   next();
