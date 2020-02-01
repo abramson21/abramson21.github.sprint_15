@@ -1,6 +1,7 @@
-const Card = require('../models/card');
 const mongoose = require('mongoose');
-const {ObjectId} = mongoose.Types;
+const Card = require('../models/card');
+
+const { ObjectId } = mongoose.Types;
 
 const NotFoundError = require('../errors/error_not_found');
 
@@ -24,7 +25,7 @@ module.exports.createCard = (req, res) => {
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  const {cardId} = req.params;
+  const { cardId } = req.params;
   if (!ObjectId.isValid(cardId)) {
     return res.status(404).send({ message: 'not found' });
   }

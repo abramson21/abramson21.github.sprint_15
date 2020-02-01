@@ -12,8 +12,7 @@ module.exports.getAllUsers = (req, res) => {
     .then((user) => {
       if (user.length === 0) {
         throw new NotFoundError('База данных user пуста!');
-      }
-      else { return res.send({ data: user }); }
+      } else { return res.send({ data: user }); }
     })
     .catch((error) => res.status(500).send({ message: error.message }));
 };
@@ -49,14 +48,12 @@ module.exports.login = (req, res) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const JWT_SECRET = '440b074611f1d4dc3d6b1e25abdb1a960ef22f3e42ca3a943b5a8e1f1ad141e4';
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
-      res
-        .cookie('jwt', token, {
-          maxAge: 3600000,
-          httpOnly: true,
-          sameSite: true,
-        })
+      const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
+      res.status(201).cookie('jwt', token, {
+        maxAge: 3600000,
+        httpOnly: true,
+        sameSite: true,
+      })
         .send(token)
         .end();
     })
