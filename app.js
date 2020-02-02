@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
-const { loginValidator } = require('./middlewares/validation');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
