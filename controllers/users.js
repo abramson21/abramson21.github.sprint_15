@@ -49,7 +49,7 @@ module.exports.login = (req, res) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev-secret', { expiresIn: '7d' });
-      res.status(201).cookie('jwt', token, {
+      res.status(200).cookie('jwt', token, {
         maxAge: 3600000,
         httpOnly: true,
         sameSite: true,
