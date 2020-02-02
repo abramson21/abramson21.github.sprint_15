@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
+const { loginValidator } = require('./middlewares/validation');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -49,15 +50,7 @@ app.post('/signup', celebrate({
   }),
 }), createUser);
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30),
-    about: Joi.string().required().min(2),
-    avatar: Joi.string().required(),
-    email: Joi.string().required().email(),
-    password: Joi.string().required(),
-  }),
-}), login);
+app.post('/signin', loginValidator, login);
 
 
 app.use('/', auth, users);
